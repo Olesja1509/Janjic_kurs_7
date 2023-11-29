@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from habits.tasks import send_message_telegram
 
 from habits.models import Habit
 from habits.validators import *
@@ -16,3 +16,7 @@ class HabitSerializer(serializers.ModelSerializer):
             IsPleasantOrPrizeValidator(field_1='is_pleasurable', field_2='prize', field_3='associated_habit'),
             PeriodValidator(field='period')
         ]
+        #
+        # def save(self, **kwargs):
+        #     send_message_telegram.delay(id)
+        #     return super().save(**kwargs)

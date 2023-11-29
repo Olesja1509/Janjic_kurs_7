@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from habits.models import Habit
 from habits.paginators import HabitPaginator
 from habits.serializers import HabitSerializer
+from habits.services import set_shedule
 from users.permissions import IsOwner, IsModerator
 
 
@@ -12,6 +13,12 @@ class HabitCreateAPIView(generics.CreateAPIView):
     """Контроллер для создания привычки"""
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        new_habit = serializer.save()
+        new_habit.creator = self.request.user
+        new_habit.save()
+        set_shedule(new_habit)
 
 
 class HabitListAPIView(generics.ListAPIView):
