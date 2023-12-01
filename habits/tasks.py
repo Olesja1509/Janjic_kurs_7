@@ -1,4 +1,3 @@
-from django.core.mail import send_mail
 from telebot import TeleBot
 from celery import shared_task
 from django.conf import settings
@@ -13,4 +12,3 @@ def send_message_telegram(habit_id):
     tg_bot = TeleBot(settings.TG_TOKEN)
     message = f'Напоминаем Вам о выполнении привычки {habit.action} в {habit.time} в {habit.place}'
     tg_bot.send_message(habit.user.chat_id, message)
-
