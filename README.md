@@ -5,14 +5,10 @@
 
 Установка и запуск:
 - git clone git@github.com:Olesja1509/Janjic_kurs_7.git
-- установить зависимости из pyproject.toml
-- установить PostreSQL и настроить БД
 - в файл .env добавить настройки, как а .env.sample
-- установить и запустить Redis
-- применить миграции
-- запустить manage.py runserver
-- запустить celery -A config worker -l INFO
-- запустить celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+- установить и настроить Docker
+- docker-compose build - собрать проект 
+- docker-compose up - запустить проект
 
 
 Задание
